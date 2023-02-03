@@ -33,7 +33,7 @@ export class Capt1Component {
 
   public capt1Forms: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: Capt1Service) {
+  constructor(private fb: FormBuilder) {
     this.capt1Forms = fb.group({
       nombre: new FormControl(null, {
         validators: Validators.required,

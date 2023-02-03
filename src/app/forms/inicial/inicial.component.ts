@@ -1,3 +1,4 @@
+import { Capt1Service } from './../services/capt1.service';
 import { capt1, capt2 } from './../interfaces/questions.interfaces';
 
 
@@ -32,7 +33,7 @@ export class InicialComponent {
   public capt_2Resp: any;
 
 
-  constructor(private fb: FormBuilder, private service: FormsService) {
+  constructor(private fb: FormBuilder, private service: FormsService, private capt1Service:Capt1Service) {
     this.formInicial = fb.group({
       usuario: new FormControl(null, {
         validators: Validators.required,
@@ -47,7 +48,7 @@ export class InicialComponent {
 
 
   buscar() {
-    console.log(this.formInicial.value);
+
     this.service.createNewUser(this.formInicial.value).subscribe(
       (res: Persona) => {
         this.usuarioEncontrado = res;
@@ -58,6 +59,9 @@ export class InicialComponent {
       }
     );
   }
+
+
+
 
   recibirFormulario(e: capt1){
       this.capt_1Resp = e;
@@ -70,5 +74,35 @@ export class InicialComponent {
 
   }
 
+
+
+  registerRespuestas(){
+
+    this.capt1Service.CreateNewresCap1(this.capt_1Resp).subscribe(
+      (res: capt1) => {
+
+
+        this.capt1Service.CreateNewresCap2(this.capt_2Resp).subscribe(
+          resp => {
+
+              alert('se ha registrado con exito')
+                this.validacion=true;
+
+          },
+          (err: any) => {
+        alert(' se ha presentado un error')
+
+            console.log(err);
+          }
+        );
+
+      },
+      (err: any) => {
+
+        alert(' se ha presentado un error')
+        console.log(err);
+      }
+    );
+  }
 }
 

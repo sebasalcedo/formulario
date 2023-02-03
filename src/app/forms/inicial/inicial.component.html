@@ -66,9 +66,15 @@
     <app-capt2 (envioFormulario)="formularioCapt2( $event )"></app-capt2>
   </div>
 
-  <div *ngIf="validacion && habilitarCapt3">
+  <div *ngIf="validacion && habilitarCapt3 ">
     <hr />
 
     <app-capt3></app-capt3>
   </div>
+
+  <span *ngIf="habilitarCapt2 && habilitarCapt3">
+    <div class="card-footer text-muted"><Button class="btn btn-success" (click)="registerRespuestas()">Registrar</Button></div>
+  </span>
+
+
 </div>
