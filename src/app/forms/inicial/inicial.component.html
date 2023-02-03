@@ -1,0 +1,74 @@
+<div class="container">
+<div *ngIf="!validacion">
+  <div class="card">
+    <div class="card-header">Formulario inicial</div>
+    <div class="card-body">
+      <h5 class="card-title">Registra todos los datos</h5>
+      <p class="card-text">
+        llena todos los campos requeridos para la información
+      </p>
+
+      <!-- formulario -->
+
+      <form
+        class="form-group"
+        [formGroup]="formInicial"
+        (ngSubmit)="buscar()"
+        novalidate
+      >
+        <div class="mb-3">
+          <label for="user" class="form-label font-weight-bold">Usuario:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="user"
+            formControlName="usuario"
+            placeholder="Ingresa tu usuario"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label font-weight-bold"
+            >Contraseña:</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            placeholder="Ingresa tu contraseña"
+            required
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="mb-1 text-center">
+          <button type="submit" class="btn btn-success">Ingresar</button>
+        </div>
+      </form>
+
+      <!-- fin formulario inicial-->
+    </div>
+  </div>
+</div>
+
+  <!-- formulario capitulo 1 -->
+
+  <div *ngIf="validacion">
+    <hr />
+
+    <app-capt1 (envioFormulario)="recibirFormulario( $event )"></app-capt1>
+  </div>
+
+  <div *ngIf="validacion && habilitarCapt2  ">
+    <hr />
+    <app-capt2 (envioFormulario)="formularioCapt2( $event )"></app-capt2>
+  </div>
+
+  <div *ngIf="validacion && habilitarCapt3">
+    <hr />
+
+    <app-capt3></app-capt3>
+  </div>
+</div>

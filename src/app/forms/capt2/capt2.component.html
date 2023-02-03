@@ -1,0 +1,87 @@
+<div class="card text-center">
+  <div class="card-header">Formulario capitulo II</div>
+  <div class="card-body">
+    <h5 class="card-title">Ingrese los datos correctamente:</h5>
+
+    <hr />
+
+    <form>
+      <label for="user" class="form-label font-weight-bold">
+        <strong
+          >6. ¿Cuál fue el principal motivo de este viaje? (Por favor seleccione
+          solo una opción)</strong
+        ></label
+      >
+
+      <br />
+      <br />
+
+      <div class="container overflow-hidden">
+        <div class="row">
+          <div class="col-6" *ngFor="let option1 of radioButton">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                (change)="questionSix(option1)"
+                name="flexRadioDefault"
+                id="flexRadioDefault1"
+              />
+              <label class="form-check-label" for="flexRadioDefault1">
+                {{ option1 }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+      <label for="user" class="form-label font-weight-bold">
+        <strong>
+          7. ¿Cómo organizó su viaje? (puede seleccionar más de una
+          opción)</strong
+        ></label
+      >
+
+      <div class="form-check" *ngFor="let question7 of checkButton7">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          [value]="question7"
+          (change)="questionSeven(question7)"
+          id="flexCheckDefault"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          {{ question7 }}
+        </label>
+      </div>
+
+      <hr />
+
+      <label for="user" class="form-label font-weight-bold">
+        <strong
+          >a. ¿Qué tipo de servicios comprendió el paquete turístico? (puede
+          seleccionar más de una opción)</strong
+        ></label
+      >
+
+      <div class="row">
+        <div class="col-6 form-check" *ngFor="let question8 of checkButton8">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [value]="question8"
+            (change)="questionEight(question8)"
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            {{ question8 }}
+          </label>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit"  >Continuar</button>
+
+    </form>
+  </div>
+</div>
